@@ -3,7 +3,7 @@ name: Task1
 on:
   push:
     branches: [main]
-    paths: [".github/workflows/exam/task1.yml"]
+    # paths: [".github/workflows/exam/task1.yml"]
 
 permissions:
   contents: read
