@@ -1,0 +1,32 @@
+name: Task1
+
+on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/exam/task1.yml"]
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [18, 19, 20]
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run test
+        run: node kiscica.js
